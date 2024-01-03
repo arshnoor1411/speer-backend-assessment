@@ -6,15 +6,19 @@ import { User } from './entities/user.entity';
 import { Repository } from 'typeorm';
 import { OTP_CONFIG } from 'src/utils/otp-config';
 import { generateOtp } from 'src/services/generate-otp';
+import { SendgridController } from 'src/sendgrid/sendgrid.controller';
 
 @Injectable()
 export class UsersService {
   constructor(
     @InjectRepository(User)
     private userRepository: Repository<User>,
+    private sendGridController: SendgridController,
   ) {}
   async create(createUserDto: CreateUserDto) {
     const otp = await generateOtp();
+
+    await this.sendGridController.sendEmail(createUserDto.email);
     await this.userRepository.create({ ...createUserDto });
   }
 
