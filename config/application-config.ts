@@ -8,4 +8,8 @@ export const applicationConfig = {
     user: process.env.DATABASE_USER,
     password: process.env.DATABASE_PASSWORD,
   },
+
+  jwt: {
+    secret: 'speer-backend',
+  },
 };
