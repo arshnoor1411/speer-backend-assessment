@@ -8,6 +8,8 @@ import { applicationConfig } from 'config/application-config';
 import { UsersModule } from './users/users.module';
 import { JwtModule } from '@nestjs/jwt';
 import { User } from './users/entities/user.entity';
+import { NotesModule } from './notes/notes.module';
+import { Note } from './notes/entities/note.entity';
 
 @Module({
   imports: [
@@ -32,7 +34,7 @@ import { User } from './users/entities/user.entity';
       username: applicationConfig.db.user,
       password: applicationConfig.db.password,
       database: applicationConfig.db.name,
-      entities: [User],
+      entities: [User, Note],
       synchronize: true,
     }),
     JwtModule.register({
@@ -41,6 +43,7 @@ import { User } from './users/entities/user.entity';
     }),
     UsersModule,
     JwtModule,
+    NotesModule,
   ],
   controllers: [AppController],
   providers: [AppService],
