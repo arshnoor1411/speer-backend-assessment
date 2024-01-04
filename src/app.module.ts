@@ -10,6 +10,8 @@ import { JwtModule } from '@nestjs/jwt';
 import { User } from './users/entities/user.entity';
 import { NotesModule } from './notes/notes.module';
 import { Note } from './notes/entities/note.entity';
+import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
+import { APP_GUARD } from '@nestjs/core';
 
 @Module({
   imports: [
@@ -27,6 +29,7 @@ import { Note } from './notes/entities/note.entity';
           .default('development'),
       }),
     }),
+
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: applicationConfig.db.host,
@@ -37,15 +40,30 @@ import { Note } from './notes/entities/note.entity';
       entities: [User, Note],
       synchronize: true,
     }),
+
     JwtModule.register({
       secret: applicationConfig.jwt.secret,
       signOptions: { expiresIn: '12h' },
     }),
+
+    ThrottlerModule.forRoot([
+      {
+        ttl: applicationConfig.rateLimit.ttl,
+        limit: applicationConfig.rateLimit.limit,
+      },
+    ]),
+
     UsersModule,
     JwtModule,
     NotesModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [
+    AppService,
+    {
+      provide: APP_GUARD,
+      useClass: ThrottlerGuard,
+    },
+  ],
 })
 export class AppModule {}
