@@ -12,4 +12,9 @@ export const applicationConfig = {
   jwt: {
     secret: 'speer-backend',
   },
+
+  rateLimit: {
+    ttl: 60,
+    limit: 10,
+  },
 };
