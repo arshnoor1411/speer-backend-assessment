@@ -10,7 +10,6 @@ export class UserEntitiesMigration1704286840685 implements MigrationInterface {
             name: 'id',
             type: 'varchar',
             isPrimary: true,
-            default: 'uuid_generate_v4()',
             generationStrategy: 'uuid',
           },
           {
