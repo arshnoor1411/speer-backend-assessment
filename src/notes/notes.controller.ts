@@ -13,9 +13,9 @@ import {
 import { NotesService } from './notes.service';
 import { CreateNoteDto } from './dto/create-note.dto';
 import { UpdateNoteDto } from './dto/update-note.dto';
-import { AuthGuard } from 'src/auth/guards/auth.guard';
-import { CurrentUser } from 'src/auth/decorators/currentUser';
-import { CurrentUserDecoratorTypes } from 'src/types';
+import { AuthGuard } from '../auth/guards/auth.guard';
+import { CurrentUser } from '../auth/decorators/currentUser';
+import { CurrentUserDecoratorTypes } from '../types';
 
 @Controller('notes')
 export class NotesController {

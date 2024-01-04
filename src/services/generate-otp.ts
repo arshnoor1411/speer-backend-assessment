@@ -1,4 +1,4 @@
-import { OTP_LENGTH } from 'src/utils/otp-config';
+import { OTP_LENGTH } from '../utils/otp-config';
 
 const otpGenerator = require('otp-generator');
 
