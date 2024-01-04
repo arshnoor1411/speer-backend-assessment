@@ -10,5 +10,8 @@ export class CreateUserDto {
   @IsNotEmpty()
   email: string;
 
+  @MinLength(8)
+  password: string;
+
   otp: string;
 }
