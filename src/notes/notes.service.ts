@@ -4,15 +4,25 @@ import { UpdateNoteDto } from './dto/update-note.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Note } from './entities/note.entity';
 import { Repository } from 'typeorm';
+import { ShareNote } from './entities/share-note.entity';
+import { SearchService } from 'src/search/search.service';
 
 @Injectable()
 export class NotesService {
   constructor(
     @InjectRepository(Note) private noteRepository: Repository<Note>,
+    @InjectRepository(ShareNote)
+    private shareNoteRepository: Repository<ShareNote>,
+    private readonly searchService: SearchService,
   ) {}
   async create(createNoteDto: CreateNoteDto, userId: string) {
-    console.log(userId);
-    await this.noteRepository.save({ ...createNoteDto, createdBy: userId });
+    const note = await this.noteRepository.save({
+      ...createNoteDto,
+      createdBy: userId,
+    });
+
+    await this.searchService.indexDocuments('QA_POST', [note]);
+
     return 'Note created successfully';
   }
 
@@ -25,7 +35,6 @@ export class NotesService {
   }
 
   findOne(id: string) {
-    console.log(id);
     return this.noteRepository.findOne({
       where: {
         id,
@@ -34,7 +43,6 @@ export class NotesService {
   }
 
   findOneById(id: string, userId: string) {
-    console.log(userId);
     return this.noteRepository.findOne({
       where: {
         id,
@@ -52,5 +60,41 @@ export class NotesService {
       id: noteId,
       createdBy: userId,
     });
+  }
+
+  async shareNotes(noteId: string, ownerId: string, sharedId: string) {
+    await this.shareNoteRepository.save({
+      noteId,
+      ownerId,
+      sharedId,
+    });
+
+    return 'Note shared';
+  }
+
+  async getSharedNotes(noteId: string, sharedId: string) {
+    try {
+      const checkSharedNote = await this.shareNoteRepository.findOne({
+        where: {
+          noteId,
+          sharedId,
+        },
+      });
+
+      if (!checkSharedNote) {
+        throw new HttpException(
+          'Note cannot be visible to the user',
+          HttpStatus.BAD_REQUEST,
+        );
+      }
+
+      const noteData = await this.findOne(noteId);
+
+      console.log(noteData);
+
+      return noteData.data;
+    } catch (error) {
+      throw error;
+    }
   }
 }

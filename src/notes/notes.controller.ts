@@ -98,4 +98,44 @@ export class NotesController {
 
     return 'Note deleted successfully';
   }
+
+  @Post(':id/:sharedId')
+  @UseGuards(AuthGuard)
+  async shareNotes(
+    @CurrentUser() currentUser: CurrentUserDecoratorTypes,
+    @Param('id') id: string,
+    @Param('sharedId') sharedId: string,
+  ) {
+    const note = await this.notesService.findOne(id);
+
+    if (!note) {
+      throw new HttpException(
+        'Note doesnt exist for the user',
+        HttpStatus.BAD_REQUEST,
+      );
+    }
+
+    await this.notesService.shareNotes(id, currentUser.sub, sharedId);
+
+    return 'Note deleted successfully';
+  }
+
+  @Get(':id/:sharedId')
+  @UseGuards(AuthGuard)
+  async getSharedNotes(
+    @CurrentUser() currentUser: CurrentUserDecoratorTypes,
+    @Param('id') id: string,
+    @Param('sharedId') sharedId: string,
+  ) {
+    const note = await this.notesService.findOne(id);
+
+    if (!note) {
+      throw new HttpException(
+        'Note doesnt exist for the user',
+        HttpStatus.BAD_REQUEST,
+      );
+    }
+
+    return this.notesService.getSharedNotes(id, sharedId);
+  }
 }
