@@ -1,13 +1,12 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
-import { UpdateUserDto } from './dto/update-user.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from './entities/user.entity';
 import { Repository } from 'typeorm';
-import { generateOtp } from 'src/services/generate-otp';
-import { SendgridService } from 'src/services/sendgrid.service';
-import hashPassword from 'src/services/hash-password';
-import { JwtAuthService } from 'src/services/jwt.service';
+import { generateOtp } from '../services/generate-otp';
+import { SendgridService } from '../services/sendgrid.service';
+import hashPassword from '../services/hash-password';
+import { JwtAuthService } from '../services/jwt.service';
 import * as bcrypt from 'bcrypt';
 
 @Injectable()

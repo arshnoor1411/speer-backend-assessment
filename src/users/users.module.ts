@@ -3,8 +3,8 @@ import { UsersService } from './users.service';
 import { UsersController } from './users.controller';
 import { User } from './entities/user.entity';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { SendgridService } from 'src/services/sendgrid.service';
-import { JwtAuthService } from 'src/services/jwt.service';
+import { SendgridService } from '../services/sendgrid.service';
+import { JwtAuthService } from '../services/jwt.service';
 import { JwtService } from '@nestjs/jwt';
 
 @Module({
