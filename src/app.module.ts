@@ -12,6 +12,8 @@ import { NotesModule } from './notes/notes.module';
 import { Note } from './notes/entities/note.entity';
 import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
 import { APP_GUARD } from '@nestjs/core';
+import { ShareNote } from './notes/entities/share-note.entity';
+import { SearchModule } from './search/search.module';
 
 @Module({
   imports: [
@@ -37,7 +39,7 @@ import { APP_GUARD } from '@nestjs/core';
       username: applicationConfig.db.user,
       password: applicationConfig.db.password,
       database: applicationConfig.db.name,
-      entities: [User, Note],
+      entities: [User, Note, ShareNote],
       synchronize: true,
     }),
 
@@ -56,6 +58,7 @@ import { APP_GUARD } from '@nestjs/core';
     UsersModule,
     JwtModule,
     NotesModule,
+    SearchModule,
   ],
   controllers: [AppController],
   providers: [
