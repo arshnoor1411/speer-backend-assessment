@@ -1,38 +1,36 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# Speer Assignment
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+## Technologies/Frameworks Used
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
-
-## Description
-
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+1. NodeJS --> It is easy to code in node js with javascript and typescript. Node js is non blocking, the way it runs the code by default is asynchronous code.
+2. TypeScript --> It makes it easier to write accurate code more quickly and catch bugs prior to runtime. We can also define return type in typescript.
+3. NestJS --> It enhances developer productivity by providing features like type checking, autocompletion, and better code documentation. Its use of decorators, dependency injection, and other design patterns enables maintainable and clean code.
+4. PostgreSQL --> It gives us more flexibility in data types, scalability. It is relatively faster compared to most of the relational databases available.
+5. TypeORM --> It allows you to interact with databases using TypeScript classes and objects, making database operations more straightforward and maintaining a code-first approach.
+6. Meilisearch --> Meilisearch is a powerful search engine that offers several advantages, including fast search capabilities, customisable ranking and filtering, easy integration, and scalability.
 
 ## Installation
+
+To install the dependencies for this project, run the following command:
 
 ```bash
 $ npm install
 ```
 
-## Running the app
+## Installation(Setup files)
+
+Download and Install meilisearch from this website :-  
+[https://www.meilisearch.com/docs/learn/getting_started/installation](https://www.meilisearch.com/docs/learn/getting_started/installation)
+
+Run meilisearch by following command :-
+
+```
+./meilisearch
+```
+
+## Running the application
+
+To start the application run the following command:
 
 ```bash
 # development
@@ -43,32 +41,47 @@ $ npm run start:dev
 
 # production mode
 $ npm run start:prod
-```
 
-## Test
-
-```bash
-# unit tests
+# test mode
 $ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
 ```
 
-## Support
+## Environment Variables
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+This application uses environment variables to configure various settings. These variables are stored in an `.env` file located in the root of the project.
 
-## Stay in touch
+Here's a brief description of each environment variable:
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+### Environment
 
-## License
+```
+APP_ENV= # The environment in which the application is running (e.g. development, main)
+PORT= # Port where server is listening
+```
 
-Nest is [MIT licensed](LICENSE).
-# speer-backend-assessment
+### Database
+
+```
+DATABASE_HOST= # The hostname of the database server
+DATABASE_PORT= # The port number on which the database server is listening
+DATABASE_NAME= # The username of the database user
+DATABASE_USER= # The name of the database
+DATABASE_PASSWORD=  # The password of the database user
+
+SENDGRID_API_KEY= "Key for sending emails from sendgrid console"
+```
+
+### JWT
+
+```
+JWT_SECRET= # The private key used to sign JWTs
+```
+
+### Meilisearch
+
+```
+MEILISEARCH_HOST= # The host url of meilisearch server
+MEILI_MASTER_KEY= # The secret key of meilisearch
+```
+
+Make sure to replace the placeholder values with your own values before starting the application.
