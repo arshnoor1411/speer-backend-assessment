@@ -6,7 +6,8 @@ import * as Joi from 'joi';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { applicationConfig } from 'config/application-config';
 import { UsersModule } from './users/users.module';
-import { SendgridModule } from './sendgrid/sendgrid.module';
+import { JwtModule } from '@nestjs/jwt';
+import { User } from './users/entities/user.entity';
 
 @Module({
   imports: [
@@ -31,11 +32,15 @@ import { SendgridModule } from './sendgrid/sendgrid.module';
       username: applicationConfig.db.user,
       password: applicationConfig.db.password,
       database: applicationConfig.db.name,
-      entities: [],
+      entities: [User],
       synchronize: true,
     }),
+    JwtModule.register({
+      secret: applicationConfig.jwt.secret,
+      signOptions: { expiresIn: '12h' },
+    }),
     UsersModule,
-    SendgridModule,
+    JwtModule,
   ],
   controllers: [AppController],
   providers: [AppService],
