@@ -38,6 +38,7 @@
     "bcrypt": "^5.1.1",
     "class-validator": "^0.14.0",
     "joi": "^17.11.0",
+    "meilisearch": "^0.36.0",
     "otp-generator": "^4.0.1",
     "passport-jwt": "^4.0.1",
     "pg": "^8.11.3",
