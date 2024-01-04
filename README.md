@@ -2,10 +2,10 @@
 
 ## Technologies/Frameworks Used
 
-1. NodeJS --> It is easy to code in node js with javascript and typescript. Node js is non blocking, the way it runs the code by default is asynchronous code.
-2. TypeScript --> It makes it easier to write accurate code more quickly and catch bugs prior to runtime. We can also define return type in typescript.
-3. NestJS --> It enhances developer productivity by providing features like type checking, autocompletion, and better code documentation. Its use of decorators, dependency injection, and other design patterns enables maintainable and clean code.
-4. PostgreSQL --> It gives us more flexibility in data types, scalability. It is relatively faster compared to most of the relational databases available.
+1. NodeJS --> Node.js is an open-source, server-side runtime environment built on the V8 JavaScript engine. It allows you to execute JavaScript code on the server, enabling the development of scalable and high-performance web applications.
+2. TypeScript --> TypeScript is a superset of JavaScript that adds static typing and other features to the language. It is designed to make it easier to write and maintain large-scale applications by providing developers with tools for catching errors early in the development process.
+3. NestJS --> NestJS is a framework for building efficient, scalable, and maintainable server-side applications with TypeScript. It is built on top of Node.js and heavily inspired by Angular, sharing many of its concepts and design patterns.
+4. PostgreSQL --> PostgreSQL, often referred to as Postgres, is a powerful, open-source relational database management system (RDBMS). It is known for its extensibility, standards compliance, and robust features.
 5. TypeORM --> It allows you to interact with databases using TypeScript classes and objects, making database operations more straightforward and maintaining a code-first approach.
 6. Meilisearch --> Meilisearch is a powerful search engine that offers several advantages, including fast search capabilities, customisable ranking and filtering, easy integration, and scalability.
 
@@ -15,17 +15,6 @@ To install the dependencies for this project, run the following command:
 
 ```bash
 $ npm install
-```
-
-## Installation(Setup files)
-
-Download and Install meilisearch from this website :-  
-[https://www.meilisearch.com/docs/learn/getting_started/installation](https://www.meilisearch.com/docs/learn/getting_started/installation)
-
-Run meilisearch by following command :-
-
-```
-./meilisearch
 ```
 
 ## Running the application
@@ -48,16 +37,9 @@ $ npm run test
 
 ## Environment Variables
 
-This application uses environment variables to configure various settings. These variables are stored in an `.env` file located in the root of the project.
+Environmental variables (env variables) are key-value pairs that are used to configure and customize the behavior of software applications. They are external to the application code and are set in the operating system or a container environment where the application runs.
 
 Here's a brief description of each environment variable:
-
-### Environment
-
-```
-APP_ENV= # The environment in which the application is running (e.g. development, main)
-PORT= # Port where server is listening
-```
 
 ### Database
 
@@ -75,6 +57,17 @@ SENDGRID_API_KEY= "Key for sending emails from sendgrid console"
 
 ```
 JWT_SECRET= # The private key used to sign JWTs
+```
+
+## Installation(Setup files)
+
+Download and Install meilisearch from this website :-  
+[https://www.meilisearch.com/docs/learn/getting_started/installation](https://www.meilisearch.com/docs/learn/getting_started/installation)
+
+Run meilisearch by following command :-
+
+```
+./meilisearch
 ```
 
 ### Meilisearch
