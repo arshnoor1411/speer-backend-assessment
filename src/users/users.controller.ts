@@ -13,11 +13,11 @@ import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 
-@Controller('users')
+@Controller('auth')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
-  @Post()
+  @Post('signup')
   async create(@Body() createUserDto: CreateUserDto) {
     try {
       const userExists = await this.usersService.findOne(createUserDto.email);
@@ -35,13 +35,43 @@ export class UsersController {
     }
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
-    return this.usersService.update(+id, updateUserDto);
+  @Get('login')
+  async login(
+    @Body('email') email: string,
+    @Body('password') password: string,
+  ) {
+    try {
+      const user = await this.usersService.findOne(email);
+      console.log(user);
+
+      if (!user) {
+        throw new HttpException(
+          'User exists with the email',
+          HttpStatus.BAD_REQUEST,
+        );
+      }
+      return this.usersService.login(email, password);
+    } catch (error) {
+      throw error;
+    }
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.usersService.remove(+id);
+  @Get('verify-otp')
+  async verifyOtp(@Body('email') email: string, @Body('otp') otp: string) {
+    try {
+      return this.usersService.verifyOtp(email, otp);
+      // return this.usersService.login(email, password);
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  @Get('resend-otp')
+  async resendOtp(@Body('email') email: string) {
+    try {
+      return this.usersService.resendOtp(email);
+    } catch (error) {
+      throw error;
+    }
   }
 }

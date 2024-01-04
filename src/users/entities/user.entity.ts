@@ -2,10 +2,14 @@ import {
   Column,
   CreateDateColumn,
   DeleteDateColumn,
+  Entity,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 
+@Entity({
+  name: 'users',
+})
 export class User {
   @PrimaryGeneratedColumn('uuid')
   id: string;
@@ -39,13 +43,13 @@ export class User {
     name: 'is_email_verified',
     nullable: true,
   })
-  isEmailVerified: string;
+  isEmailVerified: boolean;
 
   @Column({
     name: 'email_otp',
     nullable: true,
   })
-  otp: string;
+  emailOtp: string;
 
   @Column({
     name: 'otp_sent_at',
