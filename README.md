@@ -8,6 +8,7 @@
 4. PostgreSQL --> PostgreSQL, often referred to as Postgres, is a powerful, open-source relational database management system (RDBMS). It is known for its extensibility, standards compliance, and robust features.
 5. TypeORM --> It allows you to interact with databases using TypeScript classes and objects, making database operations more straightforward and maintaining a code-first approach.
 6. Meilisearch --> Meilisearch is a powerful search engine that offers several advantages, including fast search capabilities, customisable ranking and filtering, easy integration, and scalability.
+7. Sendgrid --> SendGrid is a cloud-based email service that provides a reliable and scalable solution for sending transactional and marketing emails. It is often used by developers to integrate email functionality into applications.
 
 ## Installation
 
