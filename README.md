@@ -57,7 +57,7 @@ SENDGRID_API_KEY= "Key for sending emails from sendgrid console"
 ### JWT
 
 ```
-JWT_SECRET= # The private key used to sign JWTs
+JWT_SECRET= # The private key used to sign JWTs. You will find it in application config file.
 ```
 
 ## Installation(Setup files)
