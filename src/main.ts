@@ -5,7 +5,7 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  await app.listen(3000, '0.0.0.0');
+  await app.listen(4000, '0.0.0.0');
 
   const config = new DocumentBuilder()
     .setTitle('Speer Backend')
